@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Reddit Next",
+    "version": "1.0",
+  
+    "description": "Adds next comment button to reddit like in mobile version!",
+  
+    "icons": {
+      "48": "icons/reddit.png"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.reddit.com/*/*/comments/*"],
+        "js": ["next.js"]
+      }
+    ]
+  
+  }
+  
