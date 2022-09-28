@@ -32,7 +32,7 @@ btn.addEventListener("click", () => {
         parent_y += parent.offsetHeight/2
         if (parent_y > user_y) {
             scrollTo(parent_y - window.innerHeight / 2 + 1, ()=>{
-                flash(parent);
+                //flash(parent);
             });
             break;
         }
