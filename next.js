@@ -32,7 +32,7 @@ btn.addEventListener("click", () => {
         parent_y += parent.offsetHeight/2
         if (parent_y > user_y) {
             scrollTo(parent_y - window.innerHeight / 2 + 1, ()=>{
-                flash(parent.parentNode);
+                flash(parent);
             });
             break;
         }
@@ -43,10 +43,13 @@ btn.addEventListener("click", () => {
 
 function flash(element) {
     element.style.transition = "0.1s all";
-    element.style.transform = "scale(1.1)";
+    element.style.transform = "translateX(10px)";
     setTimeout(()=> {
-        element.style.transform = "scale(1)";
-    }, 200)
+        element.style.transform = "translateX(-10px)";
+        setTimeout(()=> {
+            element.style.transform = "";
+        }, 50)
+    }, 50)
 }
 
 
