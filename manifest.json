@@ -14,7 +14,11 @@
         "matches": ["*://*.reddit.com/*/*/comments/*"],
         "js": ["next.js"]
       }
-    ]
+    ],
+
+    "background": {
+      "scripts": ["anime.min.js"]
+    }
   
   }
   

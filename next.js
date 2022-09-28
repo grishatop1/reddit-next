@@ -15,5 +15,38 @@ btn.appendChild(img);
 document.body.appendChild(btn);
 
 btn.addEventListener("click", () => {
+    let parent_comments = [];
+    let all_comments = Array.from(document.getElementsByClassName("Comment"));
+    for (let element of all_comments) {
+        let parent = element.parentNode;
+        
+        if (parent.style.paddingLeft == "16px") {
+            parent_comments.push(parent);
+        }
+    }
     
+
+    let user_y = window.innerHeight / 2 + window.scrollY;
+    for (parent of parent_comments) {
+        let parent_y = getElementY(parent);
+        parent_y += parent.offsetHeight/2
+        if (parent_y > user_y) {
+            window.scrollTo({
+                top: parent_y - window.innerHeight / 2 + 1, behavior: 'smooth'
+            });
+            anime({
+                targets: parent,
+                scale: 1.5,
+                duration: 2,
+                direction: "alternate"
+            })
+            break;
+        }
+    }
+
 });
+
+
+function getElementY(element) {
+    return element.getBoundingClientRect().top + window.scrollY;
+}
