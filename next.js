@@ -31,8 +31,8 @@ btn.addEventListener("click", () => {
         let parent_y = getElementY(parent);
         parent_y += parent.offsetHeight/2
         if (parent_y > user_y) {
-            window.scrollTo({
-                top: parent_y - window.innerHeight / 2 + 1, behavior: 'smooth'
+            scrollTo(parent_y - window.innerHeight / 2 + 1, ()=>{
+                flash(parent.parentNode);
             });
             break;
         }
@@ -41,6 +41,38 @@ btn.addEventListener("click", () => {
 });
 
 
+function flash(element) {
+    element.style.transition = "0.1s all";
+    element.style.transform = "scale(1.1)";
+    setTimeout(()=> {
+        element.style.transform = "scale(1)";
+    }, 200)
+}
+
+
 function getElementY(element) {
     return element.getBoundingClientRect().top + window.scrollY;
+}
+
+
+/**
+ * Native scrollTo with callback
+ * @param offset - offset to scroll to
+ * @param callback - callback function
+ */
+ function scrollTo(offset, callback) {
+    const fixedOffset = offset.toFixed();
+    const onScroll = function () {
+            if (window.pageYOffset.toFixed() === fixedOffset) {
+                window.removeEventListener('scroll', onScroll)
+                callback()
+            }
+        }
+
+    window.addEventListener('scroll', onScroll)
+    onScroll()
+    window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+    })
 }
