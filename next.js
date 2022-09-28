@@ -34,12 +34,6 @@ btn.addEventListener("click", () => {
             window.scrollTo({
                 top: parent_y - window.innerHeight / 2 + 1, behavior: 'smooth'
             });
-            anime({
-                targets: parent,
-                scale: 1.5,
-                duration: 2,
-                direction: "alternate"
-            })
             break;
         }
     }
