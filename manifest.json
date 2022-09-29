@@ -11,14 +11,14 @@
   
     "content_scripts": [
       {
-        "matches": ["*://*.reddit.com/*/*/comments/*"],
+        "matches": ["*://*.reddit.com/*"],
         "js": ["next.js"]
       }
     ],
 
-    "background": {
-      "scripts": ["anime.min.js"]
-    }
+    "permissions": [
+      "tabs"
+    ]
   
   }
   

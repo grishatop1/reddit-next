@@ -15,6 +15,11 @@ btn.appendChild(img);
 document.body.appendChild(btn);
 
 btn.addEventListener("click", () => {
+    moveToNext();
+});
+
+//Main function
+function moveToNext() {
     let parent_comments = [];
     let all_comments = Array.from(document.getElementsByClassName("Comment"));
     for (let element of all_comments) {
@@ -37,8 +42,23 @@ btn.addEventListener("click", () => {
             break;
         }
     }
+}
 
-});
+function showBtn() {
+    btn.style.display = "block";
+}
+
+function hideBtn() {
+    btn.style.display = "none";
+}
+
+
+function getPage(){
+    browser.tabs.query({currentWindow: true, active: true})
+      .then((tabs) => {
+        return tabs[0].url;
+    })
+  }
 
 
 function flash(element) {
